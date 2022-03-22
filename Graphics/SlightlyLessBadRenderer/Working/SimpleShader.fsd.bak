@@ -1,0 +1,14 @@
+#version 450
+
+out vec4 FragColour;
+
+in vec3 _colour;
+in vec3 _worldNormals;
+
+uniform vec3 fromLight;
+
+void main()
+{
+	float lightVaule = max(dot(_worldNormals, -fromLight), 0.0;
+	FragColour = vec4(_colour * lightVaule, 1.0);
+}
