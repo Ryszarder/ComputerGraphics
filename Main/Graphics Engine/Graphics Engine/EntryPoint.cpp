@@ -3,6 +3,7 @@
 #include <math.h>
 #include "Utilities.h"
 #include "ShaderProgram.h"
+#include "ImageRender.h"
 
 #include <iostream>
 
@@ -38,9 +39,12 @@ int main()
 		return -1;
 	}
 
-	ShaderProgram theShader("SimpleShader.vsd", "SimpleShader.fsd");
+	ImageRender image;
 
-	GLuint triangleID;
+	ShaderProgram theShader("SimpleShader.vsd", "SimpleShader.fsd");
+	theShader.UseShader();
+
+	/*GLuint triangleID;
 	glGenBuffers(1, &triangleID);
 
 	float aBunchOfFloats[] = { -0.5f, -0.5f,
@@ -55,7 +59,7 @@ int main()
 	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 12, aBunchOfFloats, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-	glEnableVertexAttribArray(0);
+	glEnableVertexAttribArray(0);*/
 
 	//The main 'game' loop
 	while (!glfwWindowShouldClose(window))
@@ -64,13 +68,13 @@ int main()
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		glBindBuffer(GL_ARRAY_BUFFER, triangleID);
+		//glBindBuffer(GL_ARRAY_BUFFER, triangleID);
 
-		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
+		//glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
 
-		theShader.UseShader();
+		//glDrawArrays(GL_TRIANGLES, 0, 6);
 
-		glDrawArrays(GL_TRIANGLES, 0, 6);
+		image.Draw(theShader);
 		
 		//Swapping the buffers - this means this frame is over
 		glfwSwapBuffers(window);
