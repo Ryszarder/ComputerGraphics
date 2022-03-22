@@ -1,9 +1,21 @@
 #version 450
 
 //Attributes
-layout (location = 0) in vec2 position;
+layout (location = 0) in vec3 position;
+layout (location = 1) in vec3 Colour;
+layout (location = 2) in vec3 Normal;
+
+//Out
+out vec3 _colour;
+out vec3 _worldNormals;
+
+//Uniform
+uniform mat4 mvpMatrix;
+uniform mat4 modelMatrix;
 
 void main()
 {
-	gl_Position = vec4(position, 0.0, 1.0);
+	_colour = Colour;
+	_worldNormals = (modelMatrix * vec4(Normal, 0.0)).xyz;
+	gl_Position = mvpMatrix * vec4(position, 1.0);
 }

@@ -3,7 +3,15 @@
 //Out
 out vec4 FragColour;
 
+//In
+in vec3 _colour;
+in vec3 _worldNormals;
+
+//Uniform
+uniform vec3 fromLight;
+
 void main()
 {
-	FragColour = vec4(0.5, 0.0, 0.5, 1.0);
+	float lightVaule = max(dot(_worldNormals, -fromLight), 0.0);
+	FragColour = vec4(_colour * lightVaule, 1.0);
 }

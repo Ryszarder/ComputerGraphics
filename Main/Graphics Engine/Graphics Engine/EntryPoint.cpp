@@ -42,24 +42,6 @@ int main()
 	ImageRender image;
 
 	ShaderProgram theShader("SimpleShader.vsd", "SimpleShader.fsd");
-	theShader.UseShader();
-
-	/*GLuint triangleID;
-	glGenBuffers(1, &triangleID);
-
-	float aBunchOfFloats[] = { -0.5f, -0.5f,
-								-0.5f, 0.5f,
-								0.5f, 0.5f,
-								0.5f, 0.5f,
-								0.5f, -0.5f,
-								-0.5f, -0.5f,
-	};
-
-	glBindBuffer(GL_ARRAY_BUFFER, triangleID);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 12, aBunchOfFloats, GL_STATIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-	glEnableVertexAttribArray(0);*/
 
 	//The main 'game' loop
 	while (!glfwWindowShouldClose(window))
@@ -68,11 +50,7 @@ int main()
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		//glBindBuffer(GL_ARRAY_BUFFER, triangleID);
-
-		//glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
-
-		//glDrawArrays(GL_TRIANGLES, 0, 6);
+		theShader.UseShader();
 
 		image.Draw(theShader);
 		

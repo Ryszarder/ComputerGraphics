@@ -28,5 +28,6 @@ public:
 	GLuint GetUniformLocation(std::string varName);
 
 	void SetUniform(std::string varName, float value);
+	void SetUniform(std::string varName, glm::vec3 value);
 	void SetUniform(std::string varName, glm::mat4 value);
 };
