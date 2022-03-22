@@ -39,6 +39,8 @@ int main()
 		return -1;
 	}
 
+	glEnable(GL_DEPTH_TEST);
+
 	ImageRender image;
 
 	ShaderProgram theShader("SimpleShader.vsd", "SimpleShader.fsd");
@@ -48,7 +50,7 @@ int main()
 	{
 		//Clear the screen - eventually do rendering code here
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		theShader.UseShader();
 
