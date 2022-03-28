@@ -67,29 +67,29 @@ ImageRender::ImageRender()
 
 	//pyramid 
 	Vertex vertices[18];
-	vertices[0].m_Vposition  = {0, 1, 0};		vertices[0].m_Vcolour  = {1, 0, 0};		vertices[0].m_Vnormal  = {0, 1, 0};
-	vertices[1].m_Vposition  = {-1, -1, 1};		vertices[1].m_Vcolour  = {1, 0, 0};		vertices[1].m_Vnormal  = {0, 1, 0};
-	vertices[2].m_Vposition  = {1, -1, 1 };		vertices[2].m_Vcolour  = {1, 0, 0};		vertices[2].m_Vnormal  = {0, 1, 0};
+	vertices[0].m_Vposition  = {0, 1, 0};		vertices[0].m_Vcolour  = {1, 0, 0};		vertices[0].m_Vnormal  = {0, 0, 1};
+	vertices[1].m_Vposition  = {-1, -1, 1};		vertices[1].m_Vcolour  = {1, 0, 0};		vertices[1].m_Vnormal  = {0, 0, 1};
+	vertices[2].m_Vposition  = {1, -1, 1 };		vertices[2].m_Vcolour  = {1, 0, 0};		vertices[2].m_Vnormal  = {0, 0, 1};
 
-	vertices[3].m_Vposition  = {0, 1, 0};		vertices[3].m_Vcolour  = {0, 1, 0};		vertices[3].m_Vnormal  = {0, 1, 0};
-	vertices[4].m_Vposition  = {1, -1, 1};		vertices[4].m_Vcolour  = {0, 1, 0};		vertices[4].m_Vnormal  = {0, 1, 0};
-	vertices[5].m_Vposition  = {1, -1, -1};		vertices[5].m_Vcolour  = {0, 1, 0};		vertices[5].m_Vnormal  = {0, 1, 0};
+	vertices[3].m_Vposition  = {0, 1, 0};		vertices[3].m_Vcolour  = {0, 1, 0};		vertices[3].m_Vnormal  = {1, 0, 0};
+	vertices[4].m_Vposition  = {1, -1, 1};		vertices[4].m_Vcolour  = {0, 1, 0};		vertices[4].m_Vnormal  = {1, 0, 0};
+	vertices[5].m_Vposition  = {1, -1, -1};		vertices[5].m_Vcolour  = {0, 1, 0};		vertices[5].m_Vnormal  = {1, 0, 0};
 
-	vertices[6].m_Vposition  = {0, 1, 0};		vertices[6].m_Vcolour  = {0, 0, 1};		vertices[6].m_Vnormal  = {0, 1, 0};
-	vertices[7].m_Vposition  = {1, -1, -1};		vertices[7].m_Vcolour  = {0, 0, 1};		vertices[7].m_Vnormal  = {0, 1, 0};
-	vertices[8].m_Vposition  = {-1, -1, -1};	vertices[8].m_Vcolour  = {0, 0, 1};		vertices[8].m_Vnormal  = {0, 1, 0};
+	vertices[6].m_Vposition  = {0, 1, 0};		vertices[6].m_Vcolour  = {0, 0, 1};		vertices[6].m_Vnormal  = {0, 0, -1};
+	vertices[7].m_Vposition  = {1, -1, -1};		vertices[7].m_Vcolour  = {0, 0, 1};		vertices[7].m_Vnormal  = {0, 0, -1};
+	vertices[8].m_Vposition  = {-1, -1, -1};	vertices[8].m_Vcolour  = {0, 0, 1};		vertices[8].m_Vnormal  = {0, 0, -1};
 
-	vertices[9].m_Vposition  = { 0, 1, 0 };		vertices[9].m_Vcolour  = { 1, 0, 1 };	vertices[9].m_Vnormal  = { 0, 1, 0 };
-	vertices[10].m_Vposition = { -1, -1, -1 };	vertices[10].m_Vcolour = { 1, 0, 1 };	vertices[10].m_Vnormal = { 0, 1, 0 };
-	vertices[11].m_Vposition = { -1, -1, 1 };	vertices[11].m_Vcolour = { 1, 0, 1 };	vertices[11].m_Vnormal = { 0, 1, 0 };
+	vertices[9].m_Vposition  = {0, 1, 0};		vertices[9].m_Vcolour  = {1, 0, 1};		vertices[9].m_Vnormal  = {-1, 0, 0};
+	vertices[10].m_Vposition = {-1, -1, -1};	vertices[10].m_Vcolour = {1, 0, 1};		vertices[10].m_Vnormal = {-1, 0, 0};
+	vertices[11].m_Vposition = {-1, -1, 1};		vertices[11].m_Vcolour = {1, 0, 1};		vertices[11].m_Vnormal = {-1, 0, 0};
 
-	vertices[12].m_Vposition = {-1, -1, -1};	vertices[12].m_Vcolour = {0, 1, 1};		vertices[12].m_Vnormal = {0, 1, 0};
-	vertices[13].m_Vposition = {1, -1, -1};		vertices[13].m_Vcolour = {0, 1, 1};		vertices[13].m_Vnormal = {0, 1, 0};
-	vertices[14].m_Vposition = {-1, -1, 1};		vertices[14].m_Vcolour = {0, 1, 1};		vertices[14].m_Vnormal = {0, 1, 0};
+	vertices[12].m_Vposition = {-1, -1, -1};	vertices[12].m_Vcolour = {0, 1, 1};		vertices[12].m_Vnormal = {0, -1, 0};
+	vertices[13].m_Vposition = {1, -1, -1};		vertices[13].m_Vcolour = {0, 1, 1};		vertices[13].m_Vnormal = {0, -1, 0};
+	vertices[14].m_Vposition = {-1, -1, 1};		vertices[14].m_Vcolour = {0, 1, 1};		vertices[14].m_Vnormal = {0, -1, 0};
 
-	vertices[15].m_Vposition = { 1, -1, 1 };	vertices[15].m_Vcolour = { 0, 1, 1 };	vertices[15].m_Vnormal = { 0, 1, 0 };
-	vertices[16].m_Vposition = { -1, -1, 1 };	vertices[16].m_Vcolour = { 0, 1, 1 };	vertices[16].m_Vnormal = { 0, 1, 0 };
-	vertices[17].m_Vposition = { 1, -1, -1 };	vertices[17].m_Vcolour = { 0, 1, 1 };	vertices[17].m_Vnormal = { 0, 1, 0 };
+	vertices[15].m_Vposition = { 1, -1, 1};		vertices[15].m_Vcolour = {0, 1, 1 };	vertices[15].m_Vnormal = {0, -1, 0};
+	vertices[16].m_Vposition = {-1, -1, 1};		vertices[16].m_Vcolour = {0, 1, 1 };	vertices[16].m_Vnormal = {0, -1, 0};
+	vertices[17].m_Vposition = {1, -1, -1};		vertices[17].m_Vcolour = {0, 1, 1 };	vertices[17].m_Vnormal = {0, -1, 0};
 
 	glBindBuffer(GL_ARRAY_BUFFER, triangleID);
 	glBufferData(GL_ARRAY_BUFFER, 15 * sizeof(Vertex), vertices, GL_STATIC_DRAW);
