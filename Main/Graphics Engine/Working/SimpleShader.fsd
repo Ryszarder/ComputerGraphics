@@ -9,12 +9,24 @@ in vec3 _worldNormals;
 in vec3 _FragPos;
 
 //Uniform
-uniform vec3 fromLight;
+uniform vec3 lightColour;
 uniform vec3 lightPos;
+uniform vec3 viewPos;
 
 void main()
 {
+	float ambientStrength = 0.1;
+	vec3 ambient = ambientStrength * lightColour;
+	
 	vec3 lightDir = normalize(lightPos - _FragPos);
 	float lightVaule = max(dot(_worldNormals, lightDir), 0.0);
-	FragColour = vec4(_colour * lightVaule, 1.0);
+	
+	float specularStrength = 0.5;
+	vec3 viewDir = normalize(viewPos - _FragPos);
+	vec3 reflectDir = reflect(-lightDir, _worldNormals);
+	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+	vec3 specular = specularStrength * spec * lightColour;
+	
+	vec3 result = (ambient + lightVaule + spec) * _colour;
+	FragColour = vec4(result, 1.0);
 }
