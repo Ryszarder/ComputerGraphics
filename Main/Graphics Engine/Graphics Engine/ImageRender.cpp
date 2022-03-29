@@ -127,11 +127,13 @@ void ImageRender::Draw(ShaderProgram meshShader, ShaderProgram lightShader)
 
 	glm::mat4 projection = glm::perspective(3.14159f / 4, 1920.0f / 1080, 0.1f, 100.0f);
 	glm::mat4 view = glm::lookAt(glm::vec3(5, 5, 5), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
-	glm::mat4 rotImage = glm::rotate(glm::mat4(1), 0*(float)glfwGetTime(), glm::vec3(0, 1, 0));
+	glm::mat4 rotImage = glm::rotate(glm::mat4(1), (float)glfwGetTime(), glm::vec3(0, 1, 0));
+	glm::vec3 lightPos(1.2f, 2.0f, 2.0f);
 
 	meshShader.SetUniform("mvpMatrix", projection * view * rotImage);
 	meshShader.SetUniform("modelMatrix", rotImage);
-	meshShader.SetUniform("fromLight", -glm::normalize(glm::vec3(1, 1, 1)));
+	meshShader.SetUniform("lightPos", lightPos);
+	//meshShader.SetUniform("fromLight", -glm::normalize(glm::vec3(1, 1, 1)));
 
 	glDrawArrays(GL_TRIANGLES, 0, 108);
 
@@ -140,7 +142,6 @@ void ImageRender::Draw(ShaderProgram meshShader, ShaderProgram lightShader)
 
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
 
-	glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 	glm::mat4 model;
 	model = glm::mat4(1.0f);
 	model = glm::translate(model, lightPos);

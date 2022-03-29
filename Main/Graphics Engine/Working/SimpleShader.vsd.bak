@@ -18,6 +18,6 @@ void main()
 {
 	_colour = Colour;
 	_worldNormals = (modelMatrix * vec4(Normal, 0.0)).xyz;
-	_FragPos = vec3(modelMatrix * vec4(position, 1.0));
+	_FragPos = modelMatrix * vec4(position, 1.0);
 	gl_Position = mvpMatrix * vec4(position, 1.0);
 }
