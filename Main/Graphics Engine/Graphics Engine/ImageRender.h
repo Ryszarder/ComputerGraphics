@@ -10,9 +10,10 @@ public:
 	ImageRender();
 	~ImageRender();
 
-	void Draw(ShaderProgram shader);
+	void Draw(ShaderProgram meshShader, ShaderProgram lightShader);
 
 private:
 	GLuint triangleID;
+	GLuint LightID;
 };
 
