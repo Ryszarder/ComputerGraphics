@@ -9,7 +9,6 @@ in vec3 _worldNormals;
 in vec3 _FragPos;
 
 //Uniform
-uniform vec3 fromLight;
 uniform vec3 lightColour;
 uniform vec3 lightPos;
 uniform vec3 viewPos;
