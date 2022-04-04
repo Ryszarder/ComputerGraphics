@@ -148,6 +148,7 @@
     <ClCompile Include="EntryPoint.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="ImageRender.cpp" />
+    <ClCompile Include="MeshRender.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
@@ -156,6 +157,7 @@
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="ImageRender.h" />
     <ClInclude Include="khrplatform.h" />
+    <ClInclude Include="MeshRender.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="Utilities.h" />
     <ClInclude Include="Vertex.h" />
