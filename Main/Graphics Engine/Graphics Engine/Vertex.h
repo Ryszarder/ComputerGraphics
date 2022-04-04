@@ -2,6 +2,8 @@
 
 #include "glm.hpp"
 
+#include <vector>
+
 struct Vertex
 {
 	glm::vec3 m_Vposition;
