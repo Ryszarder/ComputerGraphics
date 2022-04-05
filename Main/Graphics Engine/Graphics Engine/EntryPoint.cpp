@@ -4,6 +4,7 @@
 #include "Utilities.h"
 #include "ShaderProgram.h"
 #include "ImageRender.h"
+#include "MeshRender.h"
 
 #include <iostream>
 
@@ -41,10 +42,12 @@ int main()
 
 	glEnable(GL_DEPTH_TEST);
 
-	ImageRender image;
+	//ImageRender image;
+	MeshRender mesh;
 
-	ShaderProgram meshShader("SimpleShader.vsd", "SimpleShader.fsd");
-	ShaderProgram lightShader("LightShader.vsd", "LightShader.fsd");
+	//ShaderProgram TriangleShader("SimpleShader.vsd", "SimpleShader.fsd");
+	//ShaderProgram lightShader("LightShader.vsd", "LightShader.fsd");
+	ShaderProgram meshShader("MeshShader.vsd", "MeshShader.fsd");
 
 	//The main 'game' loop
 	while (!glfwWindowShouldClose(window))
@@ -53,12 +56,10 @@ int main()
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		//meshShader.UseShader();
-
-		//lightShader.UseShader();
-
-		image.Draw(meshShader, lightShader);
+		//image.Draw(TriangleShader, lightShader);
 		
+		mesh.Draw(meshShader);
+
 		//Swapping the buffers - this means this frame is over
 		glfwSwapBuffers(window);
 
