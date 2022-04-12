@@ -12,17 +12,19 @@ out vec3 _colour;
 //out vec3 _worldNormals;
 out vec2 _texCoord;
 out mat3 _TBNmat;
+out vec3 _FragPos;
 
 uniform mat4 mvpMatrix;
 uniform mat4 modelMatrix;
 
 void main()
 {
-	_TBNmat[0];
-	_TBNmat[1];
-	_TBNmat[2];
+	_TBNmat[0] = Tangent;
+	_TBNmat[1] = BiTangent;
+	_TBNmat[2] = Normal;
 	_colour = Colour;
 	_texCoord = TexCoord;
-	//_worldNormals = (modelMatrix * vec4(Normal, 0.0)).xyz;
+	_FragPos = vec3(modelMatrix * vec4(Position, 1.0));
 	gl_Position = mvpMatrix* vec4(Position, 1.0);
 }
+	//_worldNormals = (modelMatrix * vec4(Normal, 0.0)).xyz;

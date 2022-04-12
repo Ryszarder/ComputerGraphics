@@ -12,6 +12,7 @@ out vec3 _colour;
 //out vec3 _worldNormals;
 out vec2 _texCoord;
 out mat3 _TBNmat;
+out vec3 _fragPos;
 
 uniform mat4 mvpMatrix;
 uniform mat4 modelMatrix;
@@ -23,6 +24,7 @@ void main()
 	_TBNmat[2] = Normal;
 	_colour = Colour;
 	_texCoord = TexCoord;
-	//_worldNormals = (modelMatrix * vec4(Normal, 0.0)).xyz;
+	_fragPos = vec3(modelMatrix * vec4(Position, 1.0));
 	gl_Position = mvpMatrix* vec4(Position, 1.0);
 }
+	//_worldNormals = (modelMatrix * vec4(Normal, 0.0)).xyz;
