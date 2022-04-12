@@ -90,17 +90,22 @@ void MeshRender::Draw(ShaderProgram meshShader)
 
 	glm::mat4 projection = glm::perspective(3.14159f / 4, 1920.0f / 1080, 0.1f, 100.0f);
 	glm::mat4 view = glm::lookAt(glm::vec3(3, 3, 3), glm::vec3(0, 2, 0), glm::vec3(0, 1, 0));
-	glm::mat4 rotImage = glm::rotate(glm::mat4(1), (float)glfwGetTime(), glm::vec3(0, 1, 0));
+	glm::mat4 rotImage = glm::rotate(glm::mat4(1), 0*(float)glfwGetTime(), glm::vec3(0, 1, 0));
+	float lightX = 2.0f * sin(glfwGetTime());
+	float lightY = 1.5f;
+	float lightZ = 1.5f * cos(glfwGetTime());
+	glm::vec3 pointLightPos = glm::vec3(lightX, lightY, lightZ);
 
 	meshShader.SetUniform("mvpMatrix", projection * view * rotImage);
 	meshShader.SetUniform("modelMatrix", rotImage);
-	meshShader.SetUniform("lightPos", glm::vec3(1, 2, 0));
+	meshShader.SetUniform("dirLightPos", glm::vec3(-1, 2, 2));
+	meshShader.SetUniform("pointLightPos", pointLightPos);
 	meshShader.SetUniform("viewPos", glm::vec3(3, 3, 3));
-	meshShader.SetUniform("lightColour", glm::vec3(1, 0, 0));
+	meshShader.SetUniform("redColour", glm::vec3(0, 1, 1));
+	meshShader.SetUniform("blueColour", glm::vec3(1, 1, 1));
 	meshShader.SetUniform("diffTexture", 0);
 	meshShader.SetUniform("normTexture", 1);
 	meshShader.SetUniform("specTexture", 2);
-
 	m_Tdiffuse->Bind(0);
 	m_Tnormal->Bind(1);
 	m_Tspecual->Bind(2);
