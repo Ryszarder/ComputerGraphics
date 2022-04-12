@@ -89,13 +89,14 @@ void MeshRender::Draw(ShaderProgram meshShader)
 	meshShader.UseShader();
 
 	glm::mat4 projection = glm::perspective(3.14159f / 4, 1920.0f / 1080, 0.1f, 100.0f);
-	glm::mat4 view = glm::lookAt(glm::vec3(5, 5, 5), glm::vec3(0, 2, 0), glm::vec3(0, 1, 0));
+	glm::mat4 view = glm::lookAt(glm::vec3(3, 3, 3), glm::vec3(0, 2, 0), glm::vec3(0, 1, 0));
 	glm::mat4 rotImage = glm::rotate(glm::mat4(1), (float)glfwGetTime(), glm::vec3(0, 1, 0));
 
 	meshShader.SetUniform("mvpMatrix", projection * view * rotImage);
 	meshShader.SetUniform("modelMatrix", rotImage);
-	meshShader.SetUniform("lightPos", glm::vec3(2, 2, 0));
-	meshShader.SetUniform("viewPos", glm::vec3(5, 5, 5));
+	meshShader.SetUniform("lightPos", glm::vec3(1, 2, 0));
+	meshShader.SetUniform("viewPos", glm::vec3(3, 3, 3));
+	meshShader.SetUniform("lightColour", glm::vec3(1, 0, 0));
 	meshShader.SetUniform("diffTexture", 0);
 	meshShader.SetUniform("normTexture", 1);
 	meshShader.SetUniform("specTexture", 2);

@@ -27,4 +27,3 @@ void main()
 	_fragPos = vec3(modelMatrix * vec4(Position, 1.0));
 	gl_Position = mvpMatrix* vec4(Position, 1.0);
 }
-	//_worldNormals = (modelMatrix * vec4(Normal, 0.0)).xyz;
