@@ -19,6 +19,7 @@ MeshRender::MeshRender()
 	Assimp::Importer importer;
 
 	const aiScene* scene = importer.ReadFile("Mesh/soulspear.obj", aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
+	//const aiScene* scene = importer.ReadFile("Mesh/cyborg.obj", aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
 
 	aiMesh* meshPointer = *scene->mMeshes;
 
@@ -73,6 +74,10 @@ MeshRender::MeshRender()
 	m_Tdiffuse = new Texture("Mesh/soulspear_diffuse.tga");
 	m_Tnormal = new Texture("Mesh/soulspear_normal.tga");
 	m_Tspecual = new Texture("Mesh/soulspear_specular.tga");
+	
+	//m_Tdiffuse = new Texture("Mesh/cyborg_diffuse.png");
+	//m_Tnormal = new Texture("Mesh/cyborg_normal.png");
+	//m_Tspecual = new Texture("Mesh/cyborg_specular.png");
 }
 
 void MeshRender::Draw(ShaderProgram meshShader)
@@ -105,7 +110,7 @@ void MeshRender::Draw(ShaderProgram meshShader)
 	meshShader.SetUniform("dirColour", glm::vec3(1, 0, 0));
 
 	meshShader.SetUniform("pointLightPos", pointLightPos);
-	meshShader.SetUniform("pointColour", glm::vec3(1, 1, 1));
+	meshShader.SetUniform("pointColour", glm::vec3(0, 1, 1));
 
 	meshShader.SetUniform("diffTexture", 0);
 	meshShader.SetUniform("normTexture", 1);

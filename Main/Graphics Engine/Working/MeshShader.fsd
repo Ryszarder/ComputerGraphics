@@ -51,7 +51,7 @@ vec3 dirLight(vec3 dirLightPos, vec3 normal, vec3 viewDir)
 	
 	//Specular
 	vec3 reflectDir = reflect(-lightDir, normal);
-	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32.0f);
 	vec3 specular = spec * specularColour;
 
 	return(ambient + diffuse + specular);
@@ -74,7 +74,7 @@ vec3 pointLight(vec3 pointLightPos, vec3 normal, vec3 viewDir)
 	
 	//Specular
 	vec3 reflectDir = reflect(-lightDir, normal);
-	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32.0f);
 	vec3 specular = spec * specularColour;	
 	
 	float distance = length(pointLightPos - _fragPos);
