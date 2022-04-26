@@ -3,7 +3,6 @@
 out vec4 FragColour;
 
 in vec3 _colour;
-//in vec3 _worldNormals;
 in vec2 _texCoord;
 in mat3 _TBNmat;
 in vec3 _fragPos;
@@ -42,7 +41,7 @@ vec3 dirLight(vec3 dirLightPos, vec3 normal, vec3 viewDir)
 	vec3 specularColour = texture(specTexture, _texCoord).rgb;
 
 	//Ambient
-	float ambientStrength = 0.05f;
+	float ambientStrength = 0.1f;
 	vec3 ambient = ambientStrength * diffuseColour;
 	
 	//Diffuse
@@ -52,7 +51,7 @@ vec3 dirLight(vec3 dirLightPos, vec3 normal, vec3 viewDir)
 	
 	//Specular
 	vec3 reflectDir = reflect(-lightDir, normal);
-	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 16);
 	vec3 specular = spec * specularColour;
 
 	return(ambient + diffuse + specular);
@@ -65,7 +64,7 @@ vec3 pointLight(vec3 pointLightPos, vec3 normal, vec3 viewDir)
 	vec3 specularColour = texture(specTexture, _texCoord).rgb;
 
 	//Ambient
-	float ambientStrength = 0.05f;
+	float ambientStrength = 0.1f;
 	vec3 ambient = ambientStrength * diffuseColour;
 	
 	//Diffuse
@@ -75,7 +74,7 @@ vec3 pointLight(vec3 pointLightPos, vec3 normal, vec3 viewDir)
 	
 	//Specular
 	vec3 reflectDir = reflect(-lightDir, normal);
-	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 16);
 	vec3 specular = spec * specularColour;	
 	
 	float distance = length(pointLightPos - _fragPos);
