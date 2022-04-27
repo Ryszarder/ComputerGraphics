@@ -10,13 +10,13 @@ Camera::Camera(glm::vec3 vPosition, glm::vec3 vUp, float fYaw, float fPitch) :
 	UpdateCameraVectors();
 }
 
-Camera::Camera(float fPosX, float fPosY, float fPosZ, float fUpX, float fUpY, float fUpZ, float fYaw, float fPitch) : 
+Camera::Camera(float fposX, float fposY, float fposZ, float fupX, float fupY, float fupZ, float fyaw, float fpitch) : 
 		m_vfront(glm::vec3(0.0f, 0.0f, -0.1f)), m_fmovementSpeed(SPEED), m_fmouseSensitivity(SENSITIVITY), m_fzoom(ZOOM)
 {
-	m_vposition = glm::vec3(fPosX, fPosY, fPosZ);
-	m_vworldUp = glm::vec3(fUpX, fUpY, fUpZ);
-	m_fyaw = fYaw;
-	m_fpitch = fPitch;
+	m_vposition = glm::vec3(fposX, fposY, fposZ);
+	m_vworldUp = glm::vec3(fupX, fupY, fupZ);
+	m_fyaw = fyaw;
+	m_fpitch = fpitch;
 	UpdateCameraVectors();
 }
 
@@ -33,15 +33,15 @@ void Camera::ProcessKeyBoard(Camera_Movment direction, float fDeltaTime)
 		m_vposition += m_vright * velocity;
 }
 
-void Camera::ProcessMouseMovement(float fXOffSet, float fYOffSet, bool bConstrainPitch)
+void Camera::ProcessMouseMovement(float fxOffSet, float fyOffSet, bool bconstrainPitch = true)
 {
-	fXOffSet *= m_fmouseSensitivity;
-	fYOffSet *= m_fmouseSensitivity;
+	fxOffSet *= m_fmouseSensitivity;
+	fyOffSet *= m_fmouseSensitivity;
 
-	m_fyaw += fXOffSet;
-	m_fpitch += fYOffSet;
+	m_fyaw += fxOffSet;
+	m_fpitch += fyOffSet;
 
-	if (bConstrainPitch)
+	if (bconstrainPitch)
 	{
 		if (m_fpitch > 89.0f)
 			m_fpitch = 89.0f;
@@ -52,9 +52,9 @@ void Camera::ProcessMouseMovement(float fXOffSet, float fYOffSet, bool bConstrai
 	UpdateCameraVectors();
 }
 
-void Camera::ProcessMouseScroll(float fYOffSet)
+void Camera::ProcessMouseScroll(float fyOffSet)
 {
-	m_fzoom -= fYOffSet;
+	m_fzoom -= fyOffSet;
 	if (m_fzoom < 1.0f)
 		m_fzoom = 1.0f;
 	if (m_fzoom > 45.0f)
