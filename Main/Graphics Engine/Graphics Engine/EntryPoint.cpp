@@ -5,6 +5,7 @@
 #include "ShaderProgram.h"
 #include "ImageRender.h"
 #include "MeshRender.h"
+#include "Camera.h"
 
 #include <iostream>
 

@@ -118,7 +118,6 @@ void MeshRender::Draw(ShaderProgram meshShader)
 	m_Tdiffuse->Bind(0);
 	m_Tnormal->Bind(1);
 	m_Tspecual->Bind(2);
-
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferID);
 	glDrawElements(GL_TRIANGLES, m_Vindices.size(), GL_UNSIGNED_SHORT, 0);
 }

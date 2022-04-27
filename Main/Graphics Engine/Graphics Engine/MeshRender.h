@@ -3,6 +3,7 @@
 #include "Graphics.h"
 #include "Vertex.h"
 #include "Texture.h"
+#include "Camera.h"
 
 class ShaderProgram;
 
@@ -22,4 +23,5 @@ private:
 	Texture* m_Tdiffuse;
 	Texture* m_Tnormal;
 	Texture* m_Tspecual;
+	Camera camera;
 };
