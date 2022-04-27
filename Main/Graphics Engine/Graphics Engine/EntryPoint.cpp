@@ -20,8 +20,8 @@ void Mouse_Callback(GLFWwindow* window, double fxPos, double fyPos);
 void scroll_callback(GLFWwindow* window, double fxOffset, double fyOffset);
 
 Camera camera;
-float m_fxLast = 1280.0f;
-float m_fyLast = 720.0f;
+float m_fxLast = 1920 / 2.0f;
+float m_fyLast = 1080 / 2.0f;
 bool m_bfirstMouse = true;
 
 float m_fdeltaTime = 0.0f;
@@ -38,7 +38,7 @@ int main()
 	}
 
 	//Set resolution here, and give your window a different title
-	window = glfwCreateWindow(1280, 720, "Graphics", nullptr, nullptr);
+	window = glfwCreateWindow(1920, 1080, "Graphics", nullptr, nullptr);
 	if (!window)
 	{
 		glfwTerminate(); //Again, you can put a real error message here
@@ -47,6 +47,11 @@ int main()
 
 	//This tells GLFW that the window we created is the one we should render to
 	glfwMakeContextCurrent(window);
+	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+	glfwSetCursorPosCallback(window, Mouse_Callback);
+	glfwSetScrollCallback(window, scroll_callback);
+
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	//Tell GLAF to load all it's OpenGL functions
 	if (!gladLoadGL())

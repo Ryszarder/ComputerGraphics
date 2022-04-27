@@ -20,7 +20,7 @@ Camera::Camera(float fposX, float fposY, float fposZ, float fupX, float fupY, fl
 	UpdateCameraVectors();
 }
 
-void Camera::ProcessKeyBoard(Camera_Movment direction, float fDeltaTime)
+void Camera::ProcessKeyBoard(Camera_Movement direction, float fDeltaTime)
 {
 	float velocity = m_fmovementSpeed * fDeltaTime;
 	if (direction == FORWARD)
@@ -33,7 +33,7 @@ void Camera::ProcessKeyBoard(Camera_Movment direction, float fDeltaTime)
 		m_vposition += m_vright * velocity;
 }
 
-void Camera::ProcessMouseMovement(float fxOffSet, float fyOffSet, bool bconstrainPitch = true)
+void Camera::ProcessMouseMovement(float fxOffSet, float fyOffSet, bool bconstrainPitch)
 {
 	fxOffSet *= m_fmouseSensitivity;
 	fyOffSet *= m_fmouseSensitivity;

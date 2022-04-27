@@ -93,8 +93,12 @@ void MeshRender::Draw(ShaderProgram meshShader)
 
 	meshShader.UseShader();
 
-	glm::mat4 projection = glm::perspective(3.14159f / 4, 1920.0f / 1080, 0.1f, 100.0f);
-	glm::mat4 view = glm::lookAt(glm::vec3(3, 3, 3), glm::vec3(0, 2, 0), glm::vec3(0, 1, 0));
+	//glm::mat4 projection = glm::perspective(3.14159f / 4, 1920.0f / 1080, 0.1f, 100.0f);
+	//glm::mat4 view = glm::lookAt(glm::vec3(3, 3, 3), glm::vec3(0, 2, 0), glm::vec3(0, 1, 0));
+
+	glm::mat4 projection = glm::perspective(camera.m_fzoom, 1920.0f / 1080.0f, 0.1f, 100.0f);
+	glm::mat4 view = camera.GetViewMatrix();
+
 	glm::mat4 rotImage = glm::rotate(glm::mat4(1), 0*(float)glfwGetTime(), glm::vec3(0, 1, 0));
 
 	float lightX = sin((float)glfwGetTime()) * 2.0f;
