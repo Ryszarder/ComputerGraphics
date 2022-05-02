@@ -1,0 +1,23 @@
+#version 450
+
+//Attributes
+layout (location = 0) in vec3 position;
+layout (location = 1) in vec3 Colour;
+layout (location = 2) in vec3 Normal;
+
+//Out
+out vec3 _colour;
+out vec3 _worldNormals;
+out vec3 _FragPos;
+
+//Uniform
+uniform mat4 mvpMatrix;
+uniform mat4 modelMatrix;
+
+void main()
+{
+	_colour = Colour;
+	_worldNormals = (modelMatrix * vec4(Normal, 0.0)).xyz;
+	_FragPos = vec3(modelMatrix * vec4(position, 1.0));
+	gl_Position = mvpMatrix * vec4(position, 1.0);
+}
