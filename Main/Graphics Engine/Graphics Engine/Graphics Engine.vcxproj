@@ -147,20 +147,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="EntryPoint.cpp" />
     <ClCompile Include="glad.c" />
-    <ClCompile Include="ImageRender.cpp" />
     <ClCompile Include="MeshRender.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.h" />
     <ClInclude Include="glad.h" />
     <ClInclude Include="Graphics.h" />
-    <ClInclude Include="ImageRender.h" />
     <ClInclude Include="khrplatform.h" />
     <ClInclude Include="MeshRender.h" />
     <ClInclude Include="ShaderProgram.h" />

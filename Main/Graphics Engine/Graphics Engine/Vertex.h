@@ -12,6 +12,4 @@ struct Vertex
 	glm::vec2 m_VtexCoord;
 	glm::vec3 m_Vtangent;
 	glm::vec3 m_VbiTangent;
-
-	//add tangent and bitangent here!
 };

@@ -19,7 +19,6 @@ MeshRender::MeshRender()
 	Assimp::Importer importer;
 
 	const aiScene* scene = importer.ReadFile("Mesh/soulspear.obj", aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
-	//const aiScene* scene = importer.ReadFile("Mesh/cyborg.obj", aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
 
 	aiMesh* meshPointer = *scene->mMeshes;
 
@@ -74,10 +73,6 @@ MeshRender::MeshRender()
 	m_Tdiffuse = new Texture("Mesh/soulspear_diffuse.tga");
 	m_Tnormal = new Texture("Mesh/soulspear_normal.tga");
 	m_Tspecual = new Texture("Mesh/soulspear_specular.tga");
-	
-	//m_Tdiffuse = new Texture("Mesh/cyborg_diffuse.png");
-	//m_Tnormal = new Texture("Mesh/cyborg_normal.png");
-	//m_Tspecual = new Texture("Mesh/cyborg_specular.png");
 }
 
 void MeshRender::Draw(ShaderProgram meshShader)
@@ -93,11 +88,8 @@ void MeshRender::Draw(ShaderProgram meshShader)
 
 	meshShader.UseShader();
 
-	//glm::mat4 projection = glm::perspective(3.14159f / 4, 1920.0f / 1080, 0.1f, 100.0f);
-	//glm::mat4 view = glm::lookAt(glm::vec3(3, 3, 3), glm::vec3(0, 2, 0), glm::vec3(0, 1, 0));
-
-	glm::mat4 projection = glm::perspective(camera.m_fzoom, 1920.0f / 1080.0f, 0.1f, 100.0f);
-	glm::mat4 view = camera.GetViewMatrix();
+	glm::mat4 projection = glm::perspective(3.14159f / 4, 1280.0f / 720, 0.1f, 100.0f);
+	glm::mat4 view = glm::lookAt(glm::vec3(3, 3, 3), glm::vec3(0, 2, 0), glm::vec3(0, 1, 0));
 
 	glm::mat4 rotImage = glm::rotate(glm::mat4(1), 0*(float)glfwGetTime(), glm::vec3(0, 1, 0));
 
@@ -119,9 +111,11 @@ void MeshRender::Draw(ShaderProgram meshShader)
 	meshShader.SetUniform("diffTexture", 0);
 	meshShader.SetUniform("normTexture", 1);
 	meshShader.SetUniform("specTexture", 2);
+
 	m_Tdiffuse->Bind(0);
 	m_Tnormal->Bind(1);
 	m_Tspecual->Bind(2);
+
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferID);
 	glDrawElements(GL_TRIANGLES, m_Vindices.size(), GL_UNSIGNED_SHORT, 0);
 }
